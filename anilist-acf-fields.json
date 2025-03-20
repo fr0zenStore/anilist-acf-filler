@@ -1,0 +1,107 @@
+{
+    "key": "group_anilist_acf",
+    "title": "AniList Anime Fields",
+    "fields": [
+        {
+            "key": "field_title_romaji",
+            "label": "Title (Romaji)",
+            "name": "title_romaji",
+            "type": "text"
+        },
+        {
+            "key": "field_title_english",
+            "label": "Title (English)",
+            "name": "title_english",
+            "type": "text"
+        },
+        {
+            "key": "field_title_native",
+            "label": "Title (Native)",
+            "name": "title_native",
+            "type": "text"
+        },
+        {
+            "key": "field_description",
+            "label": "Description",
+            "name": "description",
+            "type": "textarea"
+        },
+        {
+            "key": "field_episodes",
+            "label": "Episodes",
+            "name": "episodes",
+            "type": "number"
+        },
+        {
+            "key": "field_status",
+            "label": "Status",
+            "name": "status",
+            "type": "text"
+        },
+        {
+            "key": "field_duration",
+            "label": "Duration (minutes per episode)",
+            "name": "duration",
+            "type": "number"
+        },
+        {
+            "key": "field_genres",
+            "label": "Genres",
+            "name": "genres",
+            "type": "text"
+        },
+        {
+            "key": "field_average_score",
+            "label": "Average Score",
+            "name": "average_score",
+            "type": "number"
+        },
+        {
+            "key": "field_popularity",
+            "label": "Popularity",
+            "name": "popularity",
+            "type": "number"
+        },
+        {
+            "key": "field_start_date",
+            "label": "Start Date",
+            "name": "start_date",
+            "type": "text"
+        },
+        {
+            "key": "field_end_date",
+            "label": "End Date",
+            "name": "end_date",
+            "type": "text"
+        },
+        {
+            "key": "field_cover_image",
+            "label": "Cover Image URL",
+            "name": "cover_image",
+            "type": "url"
+        },
+        {
+            "key": "field_banner_image",
+            "label": "Banner Image URL",
+            "name": "banner_image",
+            "type": "url"
+        },
+        {
+            "key": "field_site_url",
+            "label": "AniList Site URL",
+            "name": "site_url",
+            "type": "url"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "active": true,
+    "description": "Campi ACF per riempire automaticamente i dati degli anime da AniList"
+}
