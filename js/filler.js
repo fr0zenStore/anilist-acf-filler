@@ -126,6 +126,7 @@ jQuery(document).ready(function ($) {
                 // Seleziona l'ultima riga aggiunta
                 const row = repeater.find('.acf-row:not(.acf-clone):last');
 
+                // Riempie i campi del repeater
                 row.find('[id*="actor_name"]').val(actorName);
                 row.find('[id*="actor_image"]').val(actorImage);
                 row.find('[id*="character_name"]').val(characterName);
