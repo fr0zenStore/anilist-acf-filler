@@ -45,9 +45,9 @@
             "type": "number"
         },
         {
-            "key": "field_genres",
-            "label": "Genres",
-            "name": "genres",
+            "key": "field_year",
+            "label": "Year",
+            "name": "year",
             "type": "text"
         },
         {
@@ -91,6 +91,42 @@
             "label": "AniList Site URL",
             "name": "site_url",
             "type": "url"
+        },
+        {
+            "key": "field_actors",
+            "label": "Actors",
+            "name": "actors",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_actor_name",
+                    "label": "Actor Name",
+                    "name": "actor_name",
+                    "type": "text"
+                },
+                {
+                    "key": "field_actor_image",
+                    "label": "Actor Image URL",
+                    "name": "actor_image",
+                    "type": "url"
+                },
+                {
+                    "key": "field_character_name",
+                    "label": "Character Name",
+                    "name": "character_name",
+                    "type": "text"
+                },
+                {
+                    "key": "field_character_image",
+                    "label": "Character Image URL",
+                    "name": "character_image",
+                    "type": "url"
+                }
+            ],
+            "min": 0,
+            "max": 100,
+            "layout": "block",
+            "button_label": "Add Actor"
         }
     ],
     "location": [
@@ -103,5 +139,5 @@
         ]
     ],
     "active": true,
-    "description": "Campi ACF per riempire automaticamente i dati degli anime da AniList"
+    "description": "Campi ACF per riempire automaticamente i dati degli anime e degli attori da AniList"
 }
