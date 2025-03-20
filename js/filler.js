@@ -81,31 +81,58 @@ jQuery(document).ready(function ($) {
             const titleEnglish = anime.title.english || anime.title.romaji;
             const description = anime.description || '';
 
+            // Imposta il titolo e la descrizione del post
             $('#title').val(titleEnglish);
             $('#content').val(description);
 
-            // Campi ACF
-            $('input[name="acf[title_romaji]"]').val(anime.title.romaji);
-            $('input[name="acf[title_english]"]').val(titleEnglish);
-            $('input[name="acf[title_native]"]').val(anime.title.native);
-            $('textarea[name="acf[description]"]').val(description);
-            $('input[name="acf[episodes]"]').val(anime.episodes);
-            $('input[name="acf[status]"]').val(anime.status);
-            $('input[name="acf[duration]"]').val(anime.duration);
-            $('input[name="acf[year]"]').val(anime.startDate.year);
-            $('input[name="acf[average_score]"]').val(anime.averageScore);
-            $('input[name="acf[popularity]"]').val(anime.popularity);
-            $('input[name="acf[cover_image]"]').val(anime.coverImage.large);
-            $('input[name="acf[banner_image]"]').val(anime.bannerImage);
-            $('input[name="acf[site_url]"]').val(anime.siteUrl);
+            // Campi ACF - Usa ID anziché nome per maggiore robustezza
+            $('#acf-field_63f8a1a8a1b1e').val(anime.title.romaji);    // Title Romaji
+            $('#acf-field_63f8a1a8a1b1f').val(titleEnglish);          // Title English
+            $('#acf-field_63f8a1a8a1b20').val(anime.title.native);    // Title Native
+            $('#acf-field_63f8a1a8a1b21').val(description);           // Description
+            $('#acf-field_63f8a1a8a1b22').val(anime.episodes);        // Episodes
+            $('#acf-field_63f8a1a8a1b23').val(anime.status);          // Status
+            $('#acf-field_63f8a1a8a1b24').val(anime.duration);        // Duration
+            $('#acf-field_63f8a1a8a1b25').val(anime.averageScore);    // Average Score
+            $('#acf-field_63f8a1a8a1b26').val(anime.popularity);      // Popularity
+            $('#acf-field_63f8a1a8a1b27').val(anime.coverImage.large); // Cover Image
+            $('#acf-field_63f8a1a8a1b28').val(anime.bannerImage);     // Banner Image
+            $('#acf-field_63f8a1a8a1b29').val(anime.siteUrl);         // Site URL
 
-            // Categorie (solo Generi)
+            // Categorie (solo generi)
             const genres = anime.genres || [];
             genres.forEach(genre => {
-                $('#taxonomy-category').append(`<li id="category-${genre}" class="acf-checkbox-list-item"><label><input type="checkbox" name="post_category[]" value="${genre}" checked> ${genre}</label></li>`);
+                let categoryCheckbox = $(`#taxonomy-category input[value="${genre}"]`);
+                if (categoryCheckbox.length === 0) {
+                    // Aggiungi la categoria se non esiste
+                    $('#newcategory').val(genre);
+                    $('#category-add-submit').click();
+                } else {
+                    categoryCheckbox.prop('checked', true);
+                }
             });
 
-            alert('Campi, categorie (generi) e contenuto del post compilati con successo!');
+            // Riempimento campi attori (repeater ACF)
+            const repeater = $('[data-name="actors"] .acf-repeater');
+            anime.characters.edges.forEach((edge, index) => {
+                const actorName = edge.voiceActors[0]?.name.full || '';
+                const actorImage = edge.voiceActors[0]?.image.large || '';
+                const characterName = edge.node.name.full;
+                const characterImage = edge.node.image.large;
+
+                // Aggiungi una nuova riga nel repeater
+                repeater.find('.acf-button').click();
+
+                // Seleziona l'ultima riga aggiunta
+                const row = repeater.find('.acf-row:not(.acf-clone):last');
+
+                row.find('[id*="actor_name"]').val(actorName);
+                row.find('[id*="actor_image"]').val(actorImage);
+                row.find('[id*="character_name"]').val(characterName);
+                row.find('[id*="character_image"]').val(characterImage);
+            });
+
+            alert('Campi, categorie e contenuto del post compilati con successo!');
         })
         .catch(error => {
             console.error(error);
