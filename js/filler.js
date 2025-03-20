@@ -6,7 +6,6 @@ jQuery(document).ready(function ($) {
             return;
         }
 
-        // Query GraphQL per ottenere i dati da AniList
         const query = `
         query ($id: Int) {
             Media(id: $id, type: ANIME) {
@@ -37,6 +36,26 @@ jQuery(document).ready(function ($) {
                 }
                 bannerImage
                 siteUrl
+                characters {
+                    edges {
+                        node {
+                            name {
+                                full
+                            }
+                            image {
+                                large
+                            }
+                        }
+                        voiceActors {
+                            name {
+                                full
+                            }
+                            image {
+                                large
+                            }
+                        }
+                    }
+                }
             }
         }`;
 
@@ -59,24 +78,34 @@ jQuery(document).ready(function ($) {
                 return;
             }
 
-            // Riempimento campi ACF
+            const titleEnglish = anime.title.english || anime.title.romaji;
+            const description = anime.description || '';
+
+            $('#title').val(titleEnglish);
+            $('#content').val(description);
+
+            // Campi ACF
             $('input[name="acf[title_romaji]"]').val(anime.title.romaji);
-            $('input[name="acf[title_english]"]').val(anime.title.english);
+            $('input[name="acf[title_english]"]').val(titleEnglish);
             $('input[name="acf[title_native]"]').val(anime.title.native);
-            $('textarea[name="acf[description]"]').val(anime.description);
+            $('textarea[name="acf[description]"]').val(description);
             $('input[name="acf[episodes]"]').val(anime.episodes);
             $('input[name="acf[status]"]').val(anime.status);
             $('input[name="acf[duration]"]').val(anime.duration);
-            $('input[name="acf[genres]"]').val(anime.genres.join(', '));
+            $('input[name="acf[year]"]').val(anime.startDate.year);
             $('input[name="acf[average_score]"]').val(anime.averageScore);
             $('input[name="acf[popularity]"]').val(anime.popularity);
-            $('input[name="acf[start_date]"]').val(`${anime.startDate.year}-${anime.startDate.month}-${anime.startDate.day}`);
-            $('input[name="acf[end_date]"]').val(`${anime.endDate.year}-${anime.endDate.month}-${anime.endDate.day}`);
             $('input[name="acf[cover_image]"]').val(anime.coverImage.large);
             $('input[name="acf[banner_image]"]').val(anime.bannerImage);
             $('input[name="acf[site_url]"]').val(anime.siteUrl);
 
-            alert('Campi compilati con successo!');
+            // Categorie (solo Generi)
+            const genres = anime.genres || [];
+            genres.forEach(genre => {
+                $('#taxonomy-category').append(`<li id="category-${genre}" class="acf-checkbox-list-item"><label><input type="checkbox" name="post_category[]" value="${genre}" checked> ${genre}</label></li>`);
+            });
+
+            alert('Campi, categorie (generi) e contenuto del post compilati con successo!');
         })
         .catch(error => {
             console.error(error);
