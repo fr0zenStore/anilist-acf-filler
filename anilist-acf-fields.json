@@ -1,132 +1,110 @@
 {
-    "key": "group_anilist_acf",
-    "title": "AniList Anime Fields",
+    "key": "group_63f8a1a8a1b1d",
+    "title": "Anime Fields",
     "fields": [
         {
-            "key": "field_title_romaji",
-            "label": "Title (Romaji)",
+            "key": "field_63f8a1a8a1b1e",
+            "label": "Title Romaji",
             "name": "title_romaji",
             "type": "text"
         },
         {
-            "key": "field_title_english",
-            "label": "Title (English)",
+            "key": "field_63f8a1a8a1b1f",
+            "label": "Title English",
             "name": "title_english",
             "type": "text"
         },
         {
-            "key": "field_title_native",
-            "label": "Title (Native)",
+            "key": "field_63f8a1a8a1b20",
+            "label": "Title Native",
             "name": "title_native",
             "type": "text"
         },
         {
-            "key": "field_description",
+            "key": "field_63f8a1a8a1b21",
             "label": "Description",
             "name": "description",
             "type": "textarea"
         },
         {
-            "key": "field_episodes",
+            "key": "field_63f8a1a8a1b22",
             "label": "Episodes",
             "name": "episodes",
             "type": "number"
         },
         {
-            "key": "field_status",
+            "key": "field_63f8a1a8a1b23",
             "label": "Status",
             "name": "status",
             "type": "text"
         },
         {
-            "key": "field_duration",
-            "label": "Duration (minutes per episode)",
+            "key": "field_63f8a1a8a1b24",
+            "label": "Duration",
             "name": "duration",
             "type": "number"
         },
         {
-            "key": "field_year",
-            "label": "Year",
-            "name": "year",
-            "type": "text"
-        },
-        {
-            "key": "field_average_score",
+            "key": "field_63f8a1a8a1b25",
             "label": "Average Score",
             "name": "average_score",
             "type": "number"
         },
         {
-            "key": "field_popularity",
+            "key": "field_63f8a1a8a1b26",
             "label": "Popularity",
             "name": "popularity",
             "type": "number"
         },
         {
-            "key": "field_start_date",
-            "label": "Start Date",
-            "name": "start_date",
-            "type": "text"
-        },
-        {
-            "key": "field_end_date",
-            "label": "End Date",
-            "name": "end_date",
-            "type": "text"
-        },
-        {
-            "key": "field_cover_image",
-            "label": "Cover Image URL",
+            "key": "field_63f8a1a8a1b27",
+            "label": "Cover Image",
             "name": "cover_image",
-            "type": "url"
+            "type": "text"
         },
         {
-            "key": "field_banner_image",
-            "label": "Banner Image URL",
+            "key": "field_63f8a1a8a1b28",
+            "label": "Banner Image",
             "name": "banner_image",
-            "type": "url"
+            "type": "text"
         },
         {
-            "key": "field_site_url",
-            "label": "AniList Site URL",
+            "key": "field_63f8a1a8a1b29",
+            "label": "Site URL",
             "name": "site_url",
             "type": "url"
         },
         {
-            "key": "field_actors",
+            "key": "field_63f8a1a8a1b30",
             "label": "Actors",
             "name": "actors",
             "type": "repeater",
             "sub_fields": [
                 {
-                    "key": "field_actor_name",
+                    "key": "field_63f8a1a8a1b31",
                     "label": "Actor Name",
                     "name": "actor_name",
                     "type": "text"
                 },
                 {
-                    "key": "field_actor_image",
-                    "label": "Actor Image URL",
+                    "key": "field_63f8a1a8a1b32",
+                    "label": "Actor Image",
                     "name": "actor_image",
-                    "type": "url"
+                    "type": "text"
                 },
                 {
-                    "key": "field_character_name",
+                    "key": "field_63f8a1a8a1b33",
                     "label": "Character Name",
                     "name": "character_name",
                     "type": "text"
                 },
                 {
-                    "key": "field_character_image",
-                    "label": "Character Image URL",
+                    "key": "field_63f8a1a8a1b34",
+                    "label": "Character Image",
                     "name": "character_image",
-                    "type": "url"
+                    "type": "text"
                 }
-            ],
-            "min": 0,
-            "max": 100,
-            "layout": "block",
-            "button_label": "Add Actor"
+            ]
         }
     ],
     "location": [
@@ -139,5 +117,5 @@
         ]
     ],
     "active": true,
-    "description": "Campi ACF per riempire automaticamente i dati degli anime e degli attori da AniList"
+    "description": "Campi ACF per gli anime"
 }
